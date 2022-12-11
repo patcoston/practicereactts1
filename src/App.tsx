@@ -12,8 +12,23 @@ const dotHeight = 10
 
 function App() {
   const [dots, setDots] = useState<Dots[]>([])
-  const undo = () => {}
-  const redo = () => {}
+
+  const undo = () => {
+    const dot = dots.findLast(dot => dot.visible)
+    if (dot) {
+      dot.visible = false
+      setDots([...dots])
+    }
+  }
+
+  const redo = () => {
+    const dot = dots.find(dot => !dot.visible)
+    if (dot) {
+      dot.visible = true
+      setDots([...dots])
+    }
+  }
+
   const makeDot = (e: MouseEvent) => {
     const x = e.clientX - dotWidth / 2
     const y = e.clientY - dotHeight / 2

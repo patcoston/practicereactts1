@@ -1,7 +1,7 @@
 import { MouseEvent, useState } from 'react'
 import './App.css'
 
-interface Dots {
+interface Dot {
   x: number
   y: number
   visible: boolean
@@ -11,7 +11,7 @@ const dotWidth = 10
 const dotHeight = 10
 
 function App() {
-  const [dots, setDots] = useState<Dots[]>([])
+  const [dots, setDots] = useState<Dot[]>([])
 
   const undo = () => {
     const dot = dots.findLast(dot => dot.visible)

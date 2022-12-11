@@ -27,13 +27,11 @@ function App() {
         <button onClick={redo}>Redo</button>
       </div>
       <div className="dots" onClick={makeDot}>
-        {dots.map((dot, i) => (
-          <div
-            key={`dot-${i}`}
-            className="dot"
-            style={{ left: dot.x, top: dot.y }}
-          />
-        ))}
+        {dots.map(({ x, y, visible }, i) => {
+          return visible ? (
+            <div key={`dot-${i}`} className="dot" style={{ left: x, top: y }} />
+          ) : undefined
+        })}
       </div>
     </div>
   )
